@@ -55,7 +55,7 @@ services:
       - backend
     
     volumes:
-      - ./db:/var/lib/postgresql/data
+      - ./db/data:/var/lib/postgresql/data
 
 networks:
   proxy:
