@@ -9,5 +9,6 @@ COPY public ./public
 COPY src ./src
 COPY tsconfig.json .
 COPY .env.development .
+COPY vite.config.ts .
 
 CMD ["bun", "dev"]
