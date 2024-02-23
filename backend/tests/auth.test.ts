@@ -2,7 +2,7 @@ import { expect, describe, test, beforeEach } from "bun:test";
 
 import "../src/index";
 
-import { authenticate, login, register } from "@shared/api";
+import { authenticate, login, register, apiURL } from "@shared/api";
 import type { RegisterData } from "@shared/types";
 
 import { databaseCleanup } from "./utils";
@@ -187,5 +187,28 @@ describe("Authentication", () => {
 
     expect(user).toBeDefined();
     expect(user.email).toBe(data.email);
+  });
+
+  test("User cannot get user data with invalid token", async () => {
+    try {
+      await authenticate("invalidtoken");
+    } catch (error: any) {
+      expect(error.message).toBe("Unauthorized");
+    }
+  });
+
+  test("User cannot get user data with missing token", async () => {
+    try {
+      await authenticate("");
+    } catch (error: any) {
+      expect(error.message).toBe("Unauthorized");
+    }
+  });
+
+  test("User cannot get user data without authorization header", async () => {
+    const res = await fetch(`${apiURL}/auth/`);
+
+    expect(res.status).toBe(401);
+    expect(await res.json()).toEqual({ error: "Unauthorized" });
   });
 });

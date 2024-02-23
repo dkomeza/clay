@@ -1,6 +1,6 @@
 // @ts-ignore
 const test = process.env.NODE_ENV === "test";
-const apiURL = test ? "http://localhost:5138" : "/api";
+export const apiURL = test ? "http://localhost:5138" : "/api";
 
 import type { User, RegisterData, LoginData } from "./types";
 

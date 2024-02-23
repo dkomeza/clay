@@ -24,15 +24,15 @@ export const auth = async (req: Request, res: Response, next: NextFunction) => {
     return res.status(401).send({ error: "Unauthorized" });
   }
 
-  const decoded = jwt.verify(token, process.env.JWT_SECRET || "") as {
-    id: string;
-  };
-
-  if (!decoded || !decoded.id) {
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || "") as {
+      id: string;
+    };
+  
+    req.user = await getUser({ id: decoded.id });
+  
+    next();
+  } catch (error: any) {
     return res.status(401).send({ error: "Unauthorized" });
   }
-
-  req.user = await getUser({ id: decoded.id });
-
-  next();
 };
