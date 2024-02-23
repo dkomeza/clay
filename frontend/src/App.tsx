@@ -10,7 +10,7 @@ import { Login, Signup } from "@/pages";
 function App() {
   const navigate = useNavigate();
 
-  return (
+return (
     <>
       <NextUIProvider navigate={navigate}>
         <AuthProvider>
