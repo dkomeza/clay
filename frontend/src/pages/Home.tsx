@@ -1,4 +1,10 @@
-import { Editor, Navbar, SidebarLeft, SidebarRight, OpenSpace } from "@/components/home";
+import {
+  Editor,
+  Navbar,
+  SidebarLeft,
+  SidebarRight,
+  OpenSpace,
+} from "@/components/home";
 
 function Home() {
   return (
@@ -8,7 +14,7 @@ function Home() {
       <Editor />
       <SidebarRight />
 
-      <OpenSpace />
+      {/* <OpenSpace /> */}
     </div>
   );
 }

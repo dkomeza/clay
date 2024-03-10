@@ -1,16 +1,17 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider } from "@/context/AuthContext";
 import { NextUIProvider } from "@nextui-org/react";
 
-import PrivateRoute from "./utils/PrivateRoute";
-import Router from "./routes/Router";
+import PrivateRoute from "@/utils/PrivateRoute";
+import Router from "@/routes/Router";
 
 import { Login, Signup } from "@/pages";
+import { useEffect } from "react";
 
 function App() {
   const navigate = useNavigate();
 
-return (
+  return (
     <>
       <NextUIProvider navigate={navigate}>
         <AuthProvider>

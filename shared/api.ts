@@ -82,3 +82,18 @@ export async function authenticate(token: string): Promise<User> {
 
   return d.user;
 }
+
+export async function getSpaces(token: string): Promise<string[]> {
+  const res = await fetch(`${apiURL}/spaces`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  if (res.status !== 200) {
+    const data = (await res.json()) as { error: string };
+    throw new Error(data.error);
+  }
+
+  const d = (await res.json()) as { spaces: string[] };
+
+  return d.spaces;
+}
