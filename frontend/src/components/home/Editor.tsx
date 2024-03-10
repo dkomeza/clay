@@ -1,7 +1,12 @@
+import OpenSpace from "./OpenSpace";
+
 function Editor() {
   return (
-    <div>Editor</div>
-  )
+    <>
+      <OpenSpace />
+      <div>Editor</div>
+    </>
+  );
 }
 
-export default Editor
+export default Editor;

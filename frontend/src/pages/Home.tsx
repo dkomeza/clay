@@ -14,7 +14,6 @@ function Home() {
       <Editor />
       <SidebarRight />
 
-      {/* <OpenSpace /> */}
     </div>
   );
 }
